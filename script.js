@@ -4,7 +4,6 @@ const entryDropdown = document.getElementById("entry-dropdown");
 const addEntryButton = document.getElementById("add-entry");
 const clearButton = document.getElementById("clear")
 const output = document.getElementById("output");
-
 let isError = false;
 
 function cleanInputString (str){
@@ -44,7 +43,7 @@ function calculateCalories(e){
     const budgetCalories = getCaloriesFromInputs([budgetNumberInput]);
 
     if(isError){
-        return
+        return;
       }
 
     const consumedCalories = breakfastCalories + lunchCalories + dinnerCalories + snacksCalories;
@@ -52,12 +51,16 @@ function calculateCalories(e){
     const surplusOrDeficit = remainingCalories < 0 ? "Surplus" : "Deficit"; 
     output.innerHTML = `<span class="${surplusOrDeficit.toLowerCase()}">${Math.abs(remainingCalories)} Calorie ${surplusOrDeficit}</span>
                         <hr>
-                        <p>${budgetCalories} Calories Budgeted</p>`;
+                        <p>${budgetCalories} Calories Budgeted</p>
+                        <p>${consumedCalories} Calories Consumed</p>
+                        <p>${exerciseCalories} Calories Burned</p>
+                        `;
 
     output.classList.remove('hide');                 
 }
 
 function getCaloriesFromInputs(list) {
+    let calories = 0;
     for (const item of list) {
         const currVal = cleanInputString(item.value);
         const invalidInputMatch = isInvalidInput(currVal);
@@ -83,4 +86,4 @@ function clearForm (){
 
 addEntryButton.addEventListener("click", addEntry);
 calorieCounter.addEventListener("submit", calculateCalories);
-clearButton.addEventListener("click", clearForm)
+clearButton.addEventListener("click", clearForm);
