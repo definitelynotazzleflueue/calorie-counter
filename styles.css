@@ -16,13 +16,38 @@
     color: var(--light-grey);
   }
   
-  h1 {
+
+  .header {
+    display: flex;
+    align-items: center; /* Align icon and text vertically */
+    justify-content: center; /* Center the whole container */
+    padding: 20px;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
     text-align: center;
   }
-  
+
+.header img {
+  width: 60px; /* Adjust icon size */
+  height: auto;
+  margin-right: 10px; /* Space between icon and text */
+}
+
+.header h1 {
+  font-size: 32px;
+  font-weight: bold;
+  color: white; /* Change color as needed */
+  padding: 0%;
+  margin: 0%;
+}
+
   .container {
     width: 90%;
     max-width: 680px;
+    padding-top: 4.5rem;
   }
   
   h1,
